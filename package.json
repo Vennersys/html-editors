@@ -1,0 +1,82 @@
+{
+  "name": "@vennersys/html-editor",
+  "author": {
+    "name": "Lee Winter",
+    "email": "lee.winter@boxspark.co.uk"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "typescript",
+    "component"
+  ],
+  "repository": {
+    "type": "git"
+  },
+  "license": "MIT",
+  "description": "HTML editor examples",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsc --p ./tsconfig.build.json && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.5.0",
+    "@storybook/addon-essentials": "^8.1.10",
+    "@storybook/addon-interactions": "^8.1.10",
+    "@storybook/addon-links": "^8.1.10",
+    "@storybook/addon-themes": "^8.1.10",
+    "@storybook/blocks": "^8.1.10",
+    "@storybook/react": "^8.1.10",
+    "@storybook/react-vite": "^8.1.10",
+    "@storybook/test": "^8.1.10",
+    "@types/node": "^20.11.28",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-storybook": "^0.8.0",
+    "glob": "^10.3.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^8.1.10",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.6",
+    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-lib-inject-css": "^2.0.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "react-paginate": "^8.2.0",
+    "react-quill": "^2.0.0"
+  },
+  "resolutions": {
+    "@types/mime": "3.0.4"
+  },
+  "overrides": {
+    "@types/mime": "3.0.4"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  }
+}
