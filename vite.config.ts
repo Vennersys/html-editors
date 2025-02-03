@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 import { glob } from "glob";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
-import { libInjectCss } from "vite-plugin-lib-inject-css";
 import path from "path";
 
 // https://vitejs.dev/config/
@@ -14,7 +13,7 @@ export default defineConfig({
       "@lib": path.resolve(__dirname, "./lib"),
     },
   },
-  plugins: [react(), libInjectCss(), dts({ include: ["lib"] })],
+  plugins: [react(), dts({ include: ["lib"] })],
   build: {
     copyPublicDir: false,
     lib: {
