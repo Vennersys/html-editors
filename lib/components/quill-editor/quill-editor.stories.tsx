@@ -21,6 +21,6 @@ export const Primary: Story = {
 
 export const WithData: Story = {
   args: {
-    html: "<p>Hello, world!</p>",
+    html: "<p>Quill editor with default html</p>",
   },
 };

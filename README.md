@@ -13,3 +13,5 @@ npm i
 ```shell
 npm run storybook
 ```
+
+[Public Storybook](https://vennersys.github.io/html-editors)
