@@ -1,33 +1,24 @@
-name: Deploy Storybook to GitHub Pages
+name: Build and Publish storybook to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - "main" # change to the branch you wish to deploy from
 
 permissions:
-  id-token: write # Required for deploy-pages
-  pages: write # Allows GitHub Pages deployment
-  contents: read # Required for accessing repo content
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Storybook
-        run: npm run build-storybook
-
-      - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          path: storybook-static # Ensure this matches your Storybook output directory
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+          path: storybook-static
+          build_command: npm run build-storybook
