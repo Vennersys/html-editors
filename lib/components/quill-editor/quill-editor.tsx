@@ -7,6 +7,7 @@ function QuillEditor({ html, onHtmlChange }: { html?: string, onHtmlChange?: (va
   const quillRef = useRef<ReactQuill | null>(null);
 
   useEffect(() => {
+    if (quillRef && typeof quillRef.current?.getEditor !== 'function') return;
     if (quillRef.current) {
       console.log("Quill instance:", quillRef.current);
     }
