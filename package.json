@@ -31,7 +31,12 @@
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "test-storybook-github": "test-storybook --url https://vennersys.github.io/html-editors",
+    "playwright": "npx playwright test",
+    "playwright-ui": "npx playwright test --ui",
+    "playwright-headed": "npx playwright test --headed",
+    "playwright-codegen-github": "npx playwright codegen vennersys.github.io/html-editors"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -40,6 +45,7 @@
   "devDependencies": {
     "@ast-grep/napi": "^0.34.4",
     "@chromatic-com/storybook": "^1.5.0",
+    "@playwright/test": "^1.50.1",
     "@storybook/addon-essentials": "^8.1.10",
     "@storybook/addon-interactions": "^8.1.10",
     "@storybook/addon-links": "^8.1.10",
