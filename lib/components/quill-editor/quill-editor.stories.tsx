@@ -224,3 +224,67 @@ export const HeaderText: Story = {
 };
 
 
+export const HeaderAndNormalText: Story = {
+  args: {
+    html: "",
+  },
+  play: async ({ canvasElement }) => {
+    // Wait for Quill to render the actual editable area
+    const editor = canvasElement.querySelector(".ql-editor")
+
+    if (!editor) {
+      throw new Error("Quill editor contenteditable div not found.");
+    }
+
+    // Ensure editor is contenteditable
+    expect(editor).toHaveAttribute("contenteditable", "true");
+
+    // Type header text
+    await userEvent.type(editor, "Header Text", { delay: 50 });
+
+    // Find the Header dropdown button
+    const headerDropdown = canvasElement.querySelector(".ql-header .ql-picker-label");
+
+    if (!headerDropdown) {
+      throw new Error("Header dropdown button not found.");
+    }
+
+    const orderedListButton = canvasElement.querySelector('.ql-list[value="ordered"]');
+
+    if (!orderedListButton) throw new Error("Ordered list button not found");
+
+    // Click the header dropdown to open the options
+    await userEvent.click(headerDropdown);
+
+    // Wait for the dropdown options to be visible
+    const headerOption = await waitFor(() =>
+      canvasElement.querySelector('.ql-picker-options .ql-picker-item[data-value="1"]') // Select H1
+    );
+
+    if (!headerOption) {
+      throw new Error("Header option for H1 not found.");
+    }
+
+    // Click the selected header option (H1)
+    await userEvent.click(headerOption);
+
+    // Wait for the header to actually appear in the DOM
+    const headerElement = await waitFor(() => editor.querySelector("h1"));
+
+    if (!headerElement) {
+      throw new Error("Header element (h1) not found in the editor.");
+    }
+
+    await userEvent.type(editor, "{Enter}", { delay: 50 });
+
+    await userEvent.click(headerOption);
+
+    await userEvent.type(editor, "{Enter}Should exit the header element", { delay: 50 });
+
+
+
+    // Validate the applied header style
+    expect(headerElement).toBeInTheDocument();
+    expect(headerElement).toHaveTextContent("Header Text");
+  }
+};
